@@ -5,6 +5,8 @@
     "area": "Regent's Canal · Granary Square",
     "aioUser": "bella12345",
     "imageFeed": "presentation.image-latest",
-    "timeFeed": "presentation.last-photo-time"
+    "timeFeed": "presentation.last-photo-time",
+    "mapX": 77.35,
+    "mapY": 83.35
   }
 ]
