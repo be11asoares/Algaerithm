@@ -18,7 +18,7 @@
   }
   html { font-size: 16px; scroll-behavior: smooth; }
   body {
-    background: var(--white);
+    background-color: var(--white);
     color: var(--black);
     font-family: 'Crimson Pro', Georgia, serif;
     line-height: 1.6;
@@ -45,7 +45,18 @@
   }
 
   /* HERO */
-  .hero { padding: 4rem 1.5rem 3rem; max-width: 820px; margin: 0 auto; }
+  .hero {
+    max-width: 820px; margin: 0 auto;
+    padding: 15rem 1.5rem 2rem;
+    background-image: url("pod_banner.png");
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 85% auto;
+    min-height: 420px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-intro { max-width: 820px; margin: 0.5rem auto 0; padding: 0 1.5rem 3.5rem; }
+  .hero-intro p { font-size: 1.15rem; color: var(--text-grey); max-width: 60ch; }
   .hero-eyebrow {
     font-family: 'Barlow', sans-serif; font-size: .7rem;
     letter-spacing: .18em; text-transform: uppercase; color: var(--green);
@@ -54,7 +65,7 @@
   .hero h1 {
     font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
     font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: .95;
-    text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 1.5rem;
+    text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 0.5rem;
   }
   .hero h1 .green { color: var(--green); }
   .hero p { font-size: 1.15rem; color: var(--text-grey); max-width: 60ch; }
@@ -233,6 +244,8 @@
 <div class="hero">
   <div class="hero-eyebrow">Open source · Build your own</div>
   <h1>Build your<br><span class="green">own pod</span></h1>
+</div>
+<div class="hero-intro">
   <p>
     Algaerithm is open source. Everything you need to build a floating river pod —
     the 3D files, the electronics, the code, and the algae protocol — is here.
