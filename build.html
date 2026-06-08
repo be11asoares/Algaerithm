@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Own Pod · Algaerithm</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0c0c0c;
+    --white: #f8f6f1;
+    --green: #2a5c18;
+    --green-mid: #3d7a24;
+    --green-light: #b8d9a0;
+    --grey: #e8e4dd;
+    --text-grey: #6b6560;
+  }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Crimson Pro', Georgia, serif;
+    line-height: 1.6;
+  }
+  a { color: var(--green); }
+
+  /* NAV */
+  nav {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 1.4rem 1.5rem 1.2rem;
+    border-bottom: 1.5px solid var(--black);
+    position: sticky; top: 0; background: rgba(248,246,241,0.92);
+    backdrop-filter: blur(6px); z-index: 50;
+  }
+  .nav-name {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.35rem; letter-spacing: .02em; text-transform: uppercase;
+    color: var(--black); text-decoration: none;
+  }
+  .nav-back {
+    font-family: 'Barlow', sans-serif; font-size: .65rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--text-grey);
+    text-decoration: none;
+  }
+
+  /* HERO */
+  .hero { padding: 4rem 1.5rem 3rem; max-width: 820px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-family: 'Barlow', sans-serif; font-size: .7rem;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--green);
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(2.6rem, 9vw, 4.6rem); line-height: .95;
+    text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 1.5rem;
+  }
+  .hero h1 .green { color: var(--green); }
+  .hero p { font-size: 1.15rem; color: var(--text-grey); max-width: 60ch; }
+
+  /* CONTENTS */
+  .toc {
+    max-width: 820px; margin: 0 auto 2rem; padding: 0 1.5rem;
+    display: flex; flex-wrap: wrap; gap: .6rem;
+  }
+  .toc a {
+    font-family: 'Barlow', sans-serif; font-size: .62rem;
+    letter-spacing: .1em; text-transform: uppercase;
+    border: 1.5px solid var(--black); color: var(--black);
+    padding: .4rem .75rem; text-decoration: none;
+  }
+  .toc a:hover { background: var(--green); color: var(--white); border-color: var(--green); }
+
+  /* STEPS */
+  .step { max-width: 820px; margin: 0 auto; padding: 3rem 1.5rem; border-top: 1.5px solid var(--black); }
+  .step-num {
+    font-family: 'Barlow', sans-serif; font-size: .7rem;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--green);
+    margin-bottom: .8rem;
+  }
+  .step h2 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1;
+    text-transform: uppercase; margin-bottom: 1.2rem;
+  }
+  .step p { margin-bottom: 1rem; max-width: 64ch; }
+  .step ul, .step ol { margin: 0 0 1rem 1.3rem; }
+  .step li { margin-bottom: .5rem; }
+  .step em { color: var(--text-grey); }
+
+  .placeholder-box {
+    border: 2px dashed var(--green); background: rgba(42,92,24,.04);
+    padding: 1.4rem 1.5rem; margin: 1.2rem 0;
+    font-family: 'Barlow', sans-serif; font-size: .85rem;
+    color: var(--text-grey); letter-spacing: .02em;
+  }
+  .placeholder-box strong {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; color: var(--green);
+    display: block; margin-bottom: .4rem; font-size: .95rem;
+  }
+  .file-link {
+    display: inline-block; font-family: 'Barlow', sans-serif;
+    font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
+    background: var(--green); color: var(--white); text-decoration: none;
+    padding: .5rem .9rem; margin: .3rem .4rem .3rem 0;
+  }
+  .file-link:hover { background: var(--green-mid); }
+
+  /* CTA */
+  .cta { background: var(--black); color: var(--white); padding: 3.5rem 1.5rem; text-align: center; }
+  .cta h2 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(1.8rem, 5vw, 2.8rem); text-transform: uppercase;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .cta p { color: #c9c4ba; max-width: 50ch; margin: 0 auto 1.6rem; }
+  .cta-btn {
+    font-family: 'Barlow', sans-serif; font-size: .68rem;
+    letter-spacing: .12em; text-transform: uppercase;
+    background: var(--green-light); color: var(--black); text-decoration: none;
+    padding: .8rem 1.4rem; display: inline-block;
+  }
+  .cta-btn:hover { background: var(--white); }
+
+  footer {
+    border-top: 1.5px solid #333; padding: 1.6rem 1.5rem; background: var(--black);
+  }
+  .foot-name {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 1.1rem; text-transform: uppercase; color: #f0ede5;
+  }
+  .foot-sub {
+    font-family: 'Barlow', sans-serif; font-size: .62rem;
+    letter-spacing: .08em; text-transform: uppercase; color: #9a9688;
+    margin-top: .4rem; line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-name">Algaerithm</a>
+  <a href="index.html" class="nav-back">← Back to site</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Open source · Build your own</div>
+  <h1>Build your<br><span class="green">own pod</span></h1>
+  <p>
+    Algaerithm is open source. Everything you need to build a floating river pod —
+    the 3D files, the electronics, the code, and the algae protocol — is here.
+    This page is the friendly walkthrough; every file lives on
+    <a href="https://github.com/be11asoares/Algaerithm" target="_blank" rel="noopener">GitHub</a>
+    if you want the detail.
+  </p>
+</div>
+
+<div class="toc">
+  <a href="#assembly">1 · Assembly</a>
+  <a href="#electronics">2 · Electronics &amp; code</a>
+  <a href="#inoculation">3 · Inoculation</a>
+  <a href="#app">4 · The AlgaeScope app</a>
+  <a href="#colour">5 · Reading the colour</a>
+</div>
+
+<!-- 1 -->
+<section class="step" id="assembly">
+  <div class="step-num">Step 1</div>
+  <h2>Assembly</h2>
+  <p>
+    The pod is a floating enclosure that holds a sample of river water and the
+    electronics that watch it. Here's how to make the physical pod.
+  </p>
+  <div class="placeholder-box">
+    <strong>Add your content here</strong>
+    Describe the build: the 3D-printed parts, print settings, and any other
+    materials (flask, float, seals, fixings) with the measurements you used.
+    Then link the STL files below once they're uploaded to GitHub.
+  </div>
+  <a class="file-link" href="https://github.com/be11asoares/Algaerithm" target="_blank" rel="noopener">STL files on GitHub →</a>
+  <a class="file-link" href="https://github.com/be11asoares/Algaerithm" target="_blank" rel="noopener">Bill of materials →</a>
+</section>
+
+<!-- 2 -->
+<section class="step" id="electronics">
+  <div class="step-num">Step 2</div>
+  <h2>Electronics &amp; code</h2>
+  <p>
+    Two small boards do the work: a <strong>camera unit</strong> that photographs
+    the pod and sends the image to the cloud, and the <strong>AlgaeScope</strong> —
+    a spectrometer that measures the algae's colour across eight wavelengths.
+  </p>
+  <p><strong>Camera unit:</strong> a Seeed Studio XIAO ESP32S3 Sense. It uploads a
+    photo to a free Adafruit IO account every few seconds, which is what appears
+    live on the map. Full setup — including the Adafruit steps and the common
+    pitfalls — is in the GitHub README.</p>
+  <p><strong>AlgaeScope (spectrometer):</strong> a XIAO ESP32S3 with an AS7341
+    spectral sensor, an OLED display, and a white LED light source. It hosts its
+    own dashboard on your WiFi (see Step 4).</p>
+  <div class="placeholder-box">
+    <strong>Add your content here</strong>
+    Drop in the circuit diagrams for both boards, and links to buy each hardware
+    component (XIAO ESP32S3 Sense, AS7341 sensor, OLED, LED, resistors, buttons,
+    pump, power bank). The code files are linked below.
+  </div>
+  <a class="file-link" href="https://github.com/be11asoares/Algaerithm/blob/main/camera_pod.ino" target="_blank" rel="noopener">Camera code →</a>
+  <a class="file-link" href="https://github.com/be11asoares/Algaerithm/blob/main/algaescope.ino" target="_blank" rel="noopener">AlgaeScope code →</a>
+  <a class="file-link" href="https://github.com/be11asoares/Algaerithm#readme" target="_blank" rel="noopener">Full setup guide →</a>
+</section>
+
+<!-- 3 -->
+<section class="step" id="inoculation">
+  <div class="step-num">Step 3</div>
+  <h2>Inoculation of microalgae</h2>
+  <p>
+    The pod uses <em>Chlamydomonas reinhardtii</em>, a freshwater green alga, as
+    its living sensor. You inoculate a starter culture into your river-water
+    sample and let it grow.
+  </p>
+  <div class="placeholder-box">
+    <strong>Add your content here</strong>
+    Write the inoculation protocol: how much starter culture, the medium, ratios,
+    where to position the pod, and timings. Add where to order
+    <em>Chlamydomonas reinhardtii</em> from (culture collection / supplier and
+    strain number), plus any safety or handling notes.
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="step" id="app">
+  <div class="step-num">Step 4</div>
+  <h2>The AlgaeScope app</h2>
+  <p>
+    The AlgaeScope doesn't need a separate app to install — <strong>the device is
+    the app.</strong> When it powers on it connects to your WiFi and runs a small
+    dashboard you open in a web browser.
+  </p>
+  <ol>
+    <li>Flash the AlgaeScope code to the board and open the Arduino Serial Monitor.</li>
+    <li>It prints a line like <em>Dashboard: http://192.168.1.xx</em> — that's its
+      address on your network.</li>
+    <li>Type that address into any browser on the <strong>same WiFi</strong> and the
+      dashboard opens: live spectral readings, absorbance, the stress ratio, a
+      growth curve, and CSV export.</li>
+  </ol>
+  <p>
+    Because it runs on your local network, you view it on the same WiFi as the
+    device — there's no public server or login. Readings are held in the device's
+    memory while it's running.
+  </p>
+  <div class="placeholder-box">
+    <strong>Add your content here (optional)</strong>
+    A screenshot or two of the AlgaeScope dashboard would make this much clearer —
+    the readings table, the growth curve, the reference guide.
+  </div>
+  <a class="file-link" href="https://github.com/be11asoares/Algaerithm/blob/main/algaescope.ino" target="_blank" rel="noopener">AlgaeScope code →</a>
+</section>
+
+<!-- 5 -->
+<section class="step" id="colour">
+  <div class="step-num">Step 5</div>
+  <h2>Reading the colour</h2>
+  <p>
+    Colour is the data. The greener the sample, the higher the nutrient load in
+    the water. This chart shows how to read what you're seeing.
+  </p>
+  <div class="placeholder-box">
+    <strong>Add your content here — Laurie / Moukthika</strong>
+    Drop in the colour chart and the guide to reading it: what each colour band
+    means, the healthy vs stressed ranges, and how the spectrometer's numbers
+    (e.g. the A590/A680 stress ratio) line up with what you see by eye.
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Built one? Add it to the map</h2>
+  <p>
+    Once your pod is streaming, email us at
+    <a href="mailto:b.soares0520251@arts.ac.uk" style="color:var(--green-light)">b.soares0520251@arts.ac.uk</a>
+    and we'll add it to the shared map alongside everyone else's. The more pods,
+    the clearer the picture of our rivers becomes.
+  </p>
+  <a class="cta-btn" href="https://github.com/be11asoares/Algaerithm#readme" target="_blank" rel="noopener">Full instructions on GitHub →</a>
+</div>
+
+<footer>
+  <div class="foot-name">Algaerithm</div>
+  <div class="foot-sub">
+    Open source · MIT (code) &amp; CC BY-SA (docs)<br>
+    MA Biodesign · Central Saint Martins · UAL
+  </div>
+</footer>
+
+</body>
+</html>

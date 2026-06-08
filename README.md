@@ -138,17 +138,16 @@ balance for the XIAO ESP32S3.
 Once your camera is uploading and your feeds are public, you can have your pod
 appear on the shared Algaerithm map alongside everyone else's.
 
-**Submit your pod here:** [LINK TO YOUR FORM]
-
-You'll be asked for:
+**To add your pod, email us at b.soares0520251@arts.ac.uk** with the following:
 
 | Field | Example | Notes |
 |-------|---------|-------|
-| Guardian name | "Sam R." | A name or handle to credit you. |
+| Guardian name | "Sam R." | A name we can credit on the map. |
 | River / area | "River Lea · Hackney" | **Coarse area only** — your town or river reach, never your exact address. |
 | Adafruit username | "sam_pods" | From your account menu. |
 | Image feed key | "image-latest" | The feed **key**, exactly. |
 | Timestamp feed key | "last-photo-time" | The feed **key**, exactly. |
+| Both feeds public? | "Yes" | Confirm you've set both to Public (see Step 1) — we can't show your pod otherwise. |
 
 We review each submission (mainly to confirm the feeds are public and the
 location is coarse) and then add it to the map. Because we check by hand, there
@@ -190,6 +189,12 @@ directly. That keeps the whole thing free and simple to run.
 
 ## License
 
-[Choose a license — e.g. MIT for code, CC BY-SA for docs — and state it here.]
+The code in this repository (the Arduino sketches and website) is released under
+the **MIT License** — see the `LICENSE` file. You're free to use, modify, and
+build on it; just keep the copyright notice.
+
+The build documentation, designs, and project materials are shared under
+**Creative Commons Attribution-ShareAlike (CC BY-SA 4.0)** — use and adapt them
+freely, credit Algaerithm, and share your versions under the same terms.
 
 *Algaerithm — MA Biodesign, Central Saint Martins, UAL.*
