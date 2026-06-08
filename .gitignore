@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Secrets — never commit a sketch that contains your real keys.
+# Keep your flashed copy with real credentials OUTSIDE the repo,
+# or name it with this suffix so git ignores it:
+*.secret.ino
+secrets.h
+
+# Vercel
+.vercel
