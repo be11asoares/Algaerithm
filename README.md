@@ -133,7 +133,50 @@ balance for the XIAO ESP32S3.
 
 ---
 
-## Step 3 — Add your pod to the shared map
+## Step 3 — Flash the AlgaeScope (spectrometer)
+
+The AlgaeScope is the second board. It measures the algae's colour with an AS7341
+spectral sensor and serves its own dashboard on your WiFi — no cloud account
+needed for this part, and no separate app to install. The device *is* the app.
+
+Wiring and the parts list (AS7341 sensor, white LED, ring lights, breadboard) are
+on the [build page](https://algaerhythm.vercel.app/build.html). Once it's wired:
+
+1. Open the AlgaeScope sketch (`algaescope.ino`) in the Arduino IDE.
+2. Fill in your WiFi details at the top — these are the only lines to change:
+
+   ```cpp
+   const char* ssid      = "YOUR_WIFI_NAME";
+   const char* password  = "YOUR_WIFI_PASSWORD";
+   ```
+
+3. Select the **XIAO ESP32S3** board and the right port, then upload.
+4. Open the Serial Monitor at **115200 baud**. It connects to WiFi and prints the
+   address where the dashboard is reachable.
+
+### Reaching the dashboard
+
+Once it's running, open a browser **on the same WiFi** and go to:
+
+```
+http://algaescope.local
+```
+
+If your network or device doesn't support `.local` addresses (some Android phones
+and locked-down networks don't), use the numeric IP address the Serial Monitor
+prints instead — it looks like `http://192.168.1.xx`.
+
+The dashboard gives you live spectral readings, absorbance, the chlorophyll stress
+ratio, a growth curve over time, grow-light control, and CSV export. Readings are
+held in the device's memory while it's powered on.
+
+> **Note:** reaching the device at `algaescope.local` relies on mDNS being enabled
+> in the sketch. If you're using an older copy of the code, use the IP address from
+> the Serial Monitor instead.
+
+---
+
+## Step 4 — Add your pod to the shared map
 
 Once your camera is uploading and your feeds are public, you can have your pod
 appear on the shared Algaerithm map alongside everyone else's.

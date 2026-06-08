@@ -242,16 +242,8 @@
   </p>
 </div>
 
-<div class="toc">
-  <a href="#assembly">1 · Assembly</a>
-  <a href="#electronics">2 · Electronics &amp; code</a>
-  <a href="#inoculation">3 · Inoculation</a>
-  <a href="#app">4 · The AlgaeScope app</a>
-  <a href="#colour">5 · Reading the colour</a>
-</div>
-
 <!-- 1 -->
-<details class="step" id="assembly" open>
+<details class="step" id="assembly">
   <summary><span class="step-num">Step 1</span><span class="step-title">Assembly</span></summary>
   <div class="step-body">
   <p>
@@ -361,6 +353,10 @@
 <details class="step" id="inoculation">
   <summary><span class="step-num">Step 3</span><span class="step-title">Inoculation of microalgae</span></summary>
   <div class="step-body">
+  <figure class="fig">
+    <img src="chlamydomonas.png" class="zoomable" alt="Chlamydomonas reinhardtii microalgae culture">
+    <figcaption>Chlamydomonas reinhardtii — the living sensor at the heart of the pod. <span class="zoom-hint">Click to enlarge</span></figcaption>
+  </figure>
   <p>
     The pod uses <em>Chlamydomonas reinhardtii</em>, a freshwater green alga, as
     its living sensor. You inoculate a starter culture into your river-water
@@ -394,6 +390,10 @@
 <details class="step" id="app">
   <summary><span class="step-num">Step 4</span><span class="step-title">The AlgaeScope app</span></summary>
   <div class="step-body">
+  <figure class="fig">
+    <img src="dashboard.png" class="zoomable" alt="The AlgaeScope dashboard showing spectral readings, absorbance bars, a growth curve and grow-light controls">
+    <figcaption>The AlgaeScope dashboard, served straight from the device at algaescope.local. <span class="zoom-hint">Click to enlarge</span></figcaption>
+  </figure>
   <p>
     The AlgaeScope doesn't need a separate app to install — <strong>the device is
     the app.</strong> When it powers on it connects to your WiFi and runs a small
@@ -414,10 +414,6 @@
     device — there's no public server or login. Readings are held in the device's
     memory while it's running.
   </p>
-  <figure class="fig">
-    <img src="dashboard.png" class="zoomable" alt="The AlgaeScope dashboard showing spectral readings, absorbance bars, a growth curve and grow-light controls">
-    <figcaption>The AlgaeScope dashboard, served straight from the device at algaescope.local. <span class="zoom-hint">Click to enlarge</span></figcaption>
-  </figure>
   <a class="file-link" href="https://github.com/be11asoares/Algaerithm/blob/main/algaescope.ino" target="_blank" rel="noopener">AlgaeScope code →</a>
   </div>
 </details>
@@ -426,6 +422,10 @@
 <details class="step" id="colour">
   <summary><span class="step-num">Step 5</span><span class="step-title">Reading the colour</span></summary>
   <div class="step-body">
+  <figure class="fig">
+    <img src="colour_chart.png" class="zoomable" alt="Colour chart for reading algae nutrient levels">
+    <figcaption>How to read the colour. <span class="zoom-hint">Click to enlarge</span></figcaption>
+  </figure>
   <p>
     Colour is the data. The greener the sample, the higher the nutrient load in
     the water. This chart shows how to read what you're seeing.
@@ -467,15 +467,6 @@
 </div>
 
 <script>
-  // When a contents link is clicked, open the matching toggle so it scrolls into view expanded.
-  document.querySelectorAll('.toc a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      var id = link.getAttribute('href').slice(1);
-      var target = document.getElementById(id);
-      if (target && target.tagName.toLowerCase() === 'details') target.open = true;
-    });
-  });
-
   // Click a zoomable image to open it full-screen.
   (function () {
     var box = document.getElementById('lightbox');
