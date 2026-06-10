@@ -232,6 +232,24 @@
     font-family: 'Barlow', sans-serif; font-size: .78rem;
     line-height: 1.7; color: #9a9688;
   }
+
+  /* INTERACTIVE DEMO LAUNCH (Step 4) */
+  .demo-launch {
+    font-family: 'Barlow', sans-serif; font-size: .68rem;
+    letter-spacing: .12em; text-transform: uppercase;
+    background: var(--green); color: var(--white); text-decoration: none;
+    border: 1.5px solid var(--green); cursor: pointer;
+    padding: .8rem 1.4rem; margin: .4rem 0 .2rem;
+    display: inline-flex; align-items: center; gap: .5rem;
+    transition: background .15s;
+  }
+  .demo-launch:hover { background: var(--green-mid); }
+  .demo-launch .ext { font-size: .9rem; line-height: 1; }
+  .demo-caption {
+    font-family: 'Barlow', sans-serif; font-size: .62rem;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--text-grey);
+    margin: .5rem 0 0; max-width: 60ch;
+  }
 </style>
 </head>
 <body>
@@ -427,6 +445,14 @@
     device — there's no public server or login. Readings are held in the device's
     memory while it's running.
   </p>
+
+  <a class="demo-launch" href="algaescope-dashboard.html" target="_blank" rel="noopener">
+    ▶ Open the live dashboard <span class="ext">↗</span>
+  </a>
+  <p class="demo-caption">
+    Opens in a new tab — interactive demo loaded with sample readings from a real
+    7-day culture, not a live pod.
+  </p>
   <a class="file-link" href="https://github.com/be11asoares/Algaerithm/blob/main/algaescope.ino" target="_blank" rel="noopener">AlgaeScope code →</a>
   </div>
 </details>
@@ -495,5 +521,6 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   })();
 </script>
+
 </body>
 </html>
