@@ -18,7 +18,7 @@
     --text-grey: #6b6560;
   }
 
-  html { font-size: 16px; }
+  html { font-size: 16px; scroll-behavior: smooth; }
 
   body {
     background: transparent;
@@ -71,6 +71,27 @@
     color: var(--text-grey);
     text-align: right;
     line-height: 1.6;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: baseline;
+    gap: 1.4rem;
+  }
+  .nav-links a {
+    font-family: 'Barlow', sans-serif;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--text-grey);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  @media (max-width: 540px) {
+    .nav-links { gap: .9rem; }
+    .nav-links a { font-size: .58rem; letter-spacing: .08em; }
   }
 
   /* ── HERO ── */
@@ -1100,8 +1121,12 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-name">Algaerithm</span>
-  <div class="nav-meta">MA Biodesign<br>CSM · UAL</div>
+  <a href="index.html" class="nav-name">Algaerithm</a>
+  <div class="nav-links">
+    <a href="#why">Why it matters</a>
+    <a href="#map">Live map</a>
+    <a href="build.html">Build your own pod →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1155,7 +1180,7 @@
 </div>
 
 <!-- PETITION -->
-<div class="petition">
+<div class="petition" id="why">
   <div class="petition-label">Did you know?</div>
   <h2>Water companies<br>have paid out<br>£ billions in<br>shareholder<br>dividends while<br>infrastructure<br>has deteriorated.</h2>
   <p>The government is writing the water bill right now. <strong>Sign the Friends of the Earth petition</strong> to make sure it delivers clean rivers – not shareholder returns.</p>
@@ -1168,7 +1193,7 @@
 </div>
 
 <!-- POD MAP -->
-<div class="section" style="background:var(--white)">
+<div class="section" id="map" style="background:var(--white)">
   <h2>Pods across the country</h2>
   <p>This map shows active pods monitoring a river. Add your own to put a new stretch of water on it.</p>
   <div class="pod-map" id="podMap">
